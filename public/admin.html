@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Studio Dashboard | Lens & Light</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script defer src="/js/admin.js"></script>
+</head>
+
+<body class="admin-body">
+    <aside class="sidebar"><a class="brand" href="/"><span class="brand-mark">L</span><span>LENS <b>&
+                    LIGHT</b><small>STUDIO ADMIN</small></span></a>
+        <div class="sidebar-label">WORKSPACE</div>
+        <nav class="side-nav"><button class="active" data-view="dashboard">▦ <span>Dashboard</span></button><button
+                data-view="bookings">▣ <span>Bookings</span></button><button data-view="services">✧ <span>Services &
+                    Packages</span></button><button data-view="customers">♙ <span>Customers</span></button><button
+                data-view="photographers">◎ <span>Photographers</span></button><button data-view="reports">▤
+                <span>Reports & Payments</span></button></nav>
+        <div class="sidebar-bottom"><span class="admin-avatar">A</span>
+            <div><b id="admin-name">Administrator</b><small>Studio manager</small></div><button id="logout-btn"
+                title="Log out">↪</button>
+        </div>
+    </aside>
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div>
+                <p class="eyebrow">LENS & LIGHT / MANAGEMENT</p>
+                <h1 id="page-title">Dashboard</h1>
+            </div>
+            <div class="topbar-right"><span class="live-dot"></span><span>Studio workspace</span><a
+                    class="btn btn-small" href="/" target="_blank">View website ↗</a></div>
+        </header>
+        <div id="admin-alert" class="admin-alert" role="status"></div>
+        <section id="view-dashboard" class="admin-view">
+            <div class="welcome-row">
+                <div>
+                    <h2>Good to see you.</h2>
+                    <p>Here’s what’s happening at your studio today.</p>
+                </div><button class="btn btn-small" data-view="bookings">Manage bookings ↗</button>
+            </div>
+            <div class="stats-grid">
+                <article class="stat-card"><span class="stat-icon">♙</span>
+                    <p>Total customers</p><strong id="stat-customers">—</strong><small>Registered clients</small>
+                </article>
+                <article class="stat-card"><span class="stat-icon">▣</span>
+                    <p>Total bookings</p><strong id="stat-bookings">—</strong><small>All booking requests</small>
+                </article>
+                <article class="stat-card"><span class="stat-icon">◎</span>
+                    <p>Active photographers</p><strong id="stat-photographers">—</strong><small>Available team
+                        members</small>
+                </article>
+                <article class="stat-card"><span class="stat-icon">Rs.</span>
+                    <p>Recorded revenue</p><strong id="stat-revenue">—</strong><small>Paid demo transactions</small>
+                </article>
+            </div>
+            <div class="content-card">
+                <div class="card-head">
+                    <div>
+                        <h3>Recent bookings</h3>
+                        <p>Latest customer requests</p>
+                    </div><button class="text-button" data-view="bookings">View all →</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Booking</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-bookings">
+                            <tr>
+                                <td colspan="6">Loading…</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="view-bookings" class="admin-view" hidden>
+            <div class="content-card">
+                <div class="card-head">
+                    <div>
+                        <h3>Booking management</h3>
+                        <p>Update status, assign photographers and record demo payments.</p>
+                    </div>
+                </div>
+                <div class="toolbar"><input id="booking-search"
+                        placeholder="Search booking, customer or service…"><select id="booking-status-filter">
+                        <option value="">All statuses</option>
+                        <option>Pending</option>
+                        <option>Confirmed</option>
+                        <option>Completed</option>
+                        <option>Cancelled</option>
+                    </select><button class="btn btn-small" id="refresh-bookings">Refresh</button></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID / Customer</th>
+                                <th>Service & date</th>
+                                <th>Photographer</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookings-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="view-services" class="admin-view" hidden>
+            <div class="content-card">
+                <div class="card-head">
+                    <div>
+                        <h3>Services & packages</h3>
+                        <p>Create and maintain the studio's photography packages.</p>
+                    </div><button class="btn btn-small" id="add-service">+ Add package</button>
+                </div>
+                <div class="toolbar"><input id="services-search" placeholder="Search packages…"></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Category</th>
+                                <th>Duration</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="services-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="view-customers" class="admin-view" hidden>
+            <div class="content-card">
+                <div class="card-head">
+                    <div>
+                        <h3>Customer directory</h3>
+                        <p>Customer details are created automatically with public booking requests.</p>
+                    </div><button class="btn btn-small" id="add-customer">+ Add customer</button>
+                </div>
+                <div class="toolbar"><input id="customers-search" placeholder="Search customers…"></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customers-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="view-photographers" class="admin-view" hidden>
+            <div class="content-card">
+                <div class="card-head">
+                    <div>
+                        <h3>Photography team</h3>
+                        <p>Manage photographers and their specialties.</p>
+                    </div><button class="btn btn-small" id="add-photographer">+ Add photographer</button>
+                </div>
+                <div class="toolbar"><input id="photographers-search" placeholder="Search photographers…"></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Specialty</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="photographers-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="view-reports" class="admin-view" hidden>
+            <div class="reports-grid">
+                <div class="content-card">
+                    <div class="card-head">
+                        <div>
+                            <h3>Booking status summary</h3>
+                            <p>Distribution of all bookings</p>
+                        </div>
+                    </div>
+                    <div id="status-report" class="report-list"></div>
+                </div>
+                <div class="content-card">
+                    <div class="card-head">
+                        <div>
+                            <h3>Popular services</h3>
+                            <p>Booking count and value</p>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Bookings</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody id="popular-report"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-head">
+                    <div>
+                        <h3>Payment records</h3>
+                        <p>Demo/sandbox workflow only — no real payments are processed.</p>
+                    </div><button class="btn btn-small" id="refresh-reports">Refresh reports</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Booking</th>
+                                <th>Customer</th>
+                                <th>Method</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payments-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <dialog id="record-dialog" class="record-dialog">
+        <form id="record-form" method="dialog">
+            <div class="dialog-head">
+                <div>
+                    <p class="eyebrow">STUDIO MANAGEMENT</p>
+                    <h2 id="dialog-title">Add record</h2>
+                </div><button class="icon-button" type="button" id="dialog-close" aria-label="Close">✕</button>
+            </div>
+            <div id="dialog-fields" class="dialog-fields"></div>
+            <p class="form-message" id="dialog-message" role="status"></p>
+            <div class="dialog-actions"><button type="button" class="btn btn-outline"
+                    id="dialog-cancel">Cancel</button><button type="submit" class="btn">Save record ↗</button></div>
+        </form>
+    </dialog>
+    <dialog id="payment-dialog" class="record-dialog">
+        <form id="payment-form" method="dialog">
+            <div class="dialog-head">
+                <div>
+                    <p class="eyebrow">DEMO TRANSACTION</p>
+                    <h2>Record payment</h2>
+                </div><button class="icon-button" type="button" id="payment-close">✕</button>
+            </div>
+            <p class="muted">This records a simulated payment only. No card or bank transaction occurs.</p><input
+                type="hidden" name="booking_id"><label>Payment method<select name="method">
+                    <option>Cash</option>
+                    <option>Card (Demo)</option>
+                    <option>Bank Transfer (Demo)</option>
+                </select></label>
+            <p class="form-message" id="payment-message" role="status"></p>
+            <div class="dialog-actions"><button type="button" class="btn btn-outline"
+                    id="payment-cancel">Cancel</button><button type="submit" class="btn">Mark as paid</button></div>
+        </form>
+    </dialog>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lens & Light | Photography Studio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script defer src="/js/site.js"></script>
+</head>
+
+<body>
+    <header class="site-header"><a class="brand" href="/"><span class="brand-mark">L</span><span>LENS <b>&
+                    LIGHT</b><small>PHOTOGRAPHY STUDIO</small></span></a><button class="menu-toggle"
+            aria-label="Toggle menu">☰</button>
+        <nav class="main-nav"><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a
+                href="#contact">Contact</a><a class="btn btn-small" href="/login">Admin Login</a></nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="eyebrow">CAPTURING YOUR MOST PRECIOUS MOMENTS</p>
+                <h1>Stories worth<br><em>remembering.</em></h1>
+                <p class="hero-copy">Thoughtful photography for weddings, celebrations and every beautiful chapter in
+                    between.</p><a class="btn" href="#booking">Book a Session <span>↗</span></a>
+                <div class="hero-note"><span class="dot"></span> Creating memories since 2014</div>
+            </div>
+            <div class="hero-side">EST. 2014 <span>•</span> JAFFNA, SRI LANKA</div>
+        </section>
+        <section class="section services-section" id="services">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">WHAT WE DO</p>
+                    <h2>Our photography <em>services</em></h2>
+                </div>
+                <p>Every frame has a feeling. We help you keep it forever.</p>
+            </div>
+            <div id="service-cards" class="service-grid">
+                <div class="loading-card">Loading studio packages…</div>
+            </div>
+        </section>
+        <section class="gallery-section" id="gallery">
+            <div class="section-heading light">
+                <div>
+                    <p class="eyebrow">SELECTED MOMENTS</p>
+                    <h2>Made to be <em>remembered.</em></h2>
+                </div>
+                <p>A glimpse into the celebrations, people and stories we have the joy of photographing.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-tile gallery-one"><span>01 / WEDDINGS</span></div>
+                <div class="gallery-tile gallery-two"><span>02 / PORTRAITS</span></div>
+                <div class="gallery-tile gallery-three"><span>03 / CELEBRATIONS</span></div>
+            </div>
+        </section>
+        <section class="section booking-section" id="booking">
+            <div class="booking-intro">
+                <p class="eyebrow">LET'S MAKE SOMETHING TIMELESS</p>
+                <h2>Your story<br>starts <em>here.</em></h2>
+                <p>Tell us a little about your event and we’ll get back to you to confirm the details.</p>
+                <div class="contact-mini"><span>✉</span>
+                    <div><small>EMAIL US</small><b>hello@lensandlight.example</b></div>
+                </div>
+            </div>
+            <form id="booking-form" class="panel-form">
+                <div class="form-heading">
+                    <h3>Request a booking</h3>
+                    <p>Fields marked * are required.</p>
+                </div>
+                <div class="form-row"><label>Full name *<input name="name" required maxlength="120"
+                            placeholder="Your name"></label><label>Phone number *<input name="phone" required
+                            maxlength="30" placeholder="07X XXX XXXX"></label></div>
+                <div class="form-row"><label>Email address<input name="email" type="email" maxlength="150"
+                            placeholder="you@example.com"></label><label>Photography package *<select name="service_id"
+                            id="booking-service" required>
+                            <option value="">Choose a package</option>
+                        </select></label></div>
+                <div class="form-row"><label>Event date *<input name="booking_date" type="date" id="booking-date"
+                            required></label><label>Preferred time<input name="booking_time" type="time"
+                            value="09:00"></label></div><label>Event location<input name="location" maxlength="255"
+                        placeholder="Venue or location"></label><label>Tell us about your event<textarea name="notes"
+                        rows="3" maxlength="2000"
+                        placeholder="Event type, number of guests, special requests…"></textarea></label><button
+                    class="btn" type="submit">Send booking request <span>↗</span></button>
+                <p class="form-message" id="booking-message" role="status"></p><small class="muted">Submitting a request
+                    does not guarantee a booking until confirmed by the studio.</small>
+            </form>
+        </section>
+        <section class="about-strip" id="about">
+            <div class="about-number">L<span>&</span>L</div>
+            <div>
+                <p class="eyebrow">THE PEOPLE BEHIND THE LENS</p>
+                <h2>Real moments.<br><em>Honest emotion.</em></h2>
+            </div>
+            <p>We believe the best photographs are more than pictures. They are the feeling of a day, the people you
+                love, and the details you never want to forget.</p>
+        </section>
+    </main>
+    <footer id="contact"><a class="brand footer-brand" href="/"><span class="brand-mark">L</span><span>LENS <b>&
+                    LIGHT</b><small>PHOTOGRAPHY STUDIO</small></span></a>
+        <p>Good light. Good people. Good memories.</p>
+        <div><a href="mailto:hello@lensandlight.example">Email</a><a href="/login">Studio admin</a></div><small>© <span
+                id="year"></span> Lens & Light Photography Studio. Demo project.</small>
+    </footer>
+    <div class="toast" id="toast" role="status"></div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Login | Lens & Light</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script defer src="/js/login.js"></script>
+</head>
+
+<body class="login-page"><a class="back-home" href="/">← Back to website</a>
+    <main class="login-wrap">
+        <div class="login-art"><a class="brand" href="/"><span class="brand-mark">L</span><span>LENS <b>&
+                        LIGHT</b><small>PHOTOGRAPHY STUDIO</small></span></a>
+            <div>
+                <p class="eyebrow">BEHIND THE SCENES</p>
+                <h1>Every detail,<br><em>in focus.</em></h1>
+                <p>Manage bookings, clients, packages and studio operations in one place.</p>
+            </div><small>PHOTOGRAPHY STUDIO MANAGEMENT</small>
+        </div>
+        <div class="login-form-wrap">
+            <div id="login-card" class="login-card">
+                <form id="login-form">
+                    <p class="eyebrow">STUDIO ADMIN</p>
+                    <h2>Welcome back.</h2>
+                    <p class="muted">Sign in to manage your studio.</p><label>Email address<input name="email"
+                            type="email" required autocomplete="username"
+                            placeholder="admin@example.com"></label><label>Password<input name="password"
+                            type="password" required autocomplete="current-password"
+                            placeholder="Enter your password"></label><button class="btn btn-full" type="submit">Sign in
+                        <span>↗</span></button>
+                    <p class="form-message" id="login-message" role="status"></p>
+                </form>
+                <div class="setup-box" id="setup-box" hidden>
+                    <hr>
+                    <h3>First-time setup</h3>
+                    <p class="muted">No admin account exists. Create the first administrator.</p>
+                    <form id="setup-form"><label>Admin name<input name="name" required
+                                maxlength="100"></label><label>Admin email<input name="email" type="email"
+                                required></label><label>Password (minimum 8 characters)<input name="password"
+                                type="password" minlength="8" required></label><button class="btn btn-full"
+                            type="submit">Create administrator</button>
+                        <p class="form-message" id="setup-message" role="status"></p>
+                    </form>
+                </div>
+                <p class="muted tiny">For authorized studio staff only.</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
